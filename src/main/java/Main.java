@@ -32,6 +32,18 @@ public class Main {
         measureStat(fileStat, warmup, dir, file, missing);
         measureStat(nioStat, warmup, dir.toPath(), file.toPath(), missing.toPath());
 
+        System.out.println();
+        System.out.println("stat warmup: " + warmup + " iterations");
+        measureStat(nativeStat, warmup, dir, file, missing);
+        measureStat(fileStat, warmup, dir, file, missing);
+        measureStat(nioStat, warmup, dir.toPath(), file.toPath(), missing.toPath());
+
+        System.out.println();
+        System.out.println("stat warmup: " + warmup + " iterations");
+        measureStat(nativeStat, warmup, dir, file, missing);
+        measureStat(fileStat, warmup, dir, file, missing);
+        measureStat(nioStat, warmup, dir.toPath(), file.toPath(), missing.toPath());
+
         int test1 = 2000;
         System.out.println();
         System.out.println("stat test 1: " + test1 + " iterations");
@@ -39,14 +51,38 @@ public class Main {
         measureStat(fileStat, test1, dir, file, missing);
         measureStat(nioStat, test1, dir.toPath(), file.toPath(), missing.toPath());
 
+        System.out.println();
+        System.out.println("stat test 2: " + test1 + " iterations");
+        measureStat(nativeStat, test1, dir, file, missing);
+        measureStat(fileStat, test1, dir, file, missing);
+        measureStat(nioStat, test1, dir.toPath(), file.toPath(), missing.toPath());
+
         int test2 = 500000;
         System.out.println();
-        System.out.println("stat test 2: " + test2 + " iterations");
+        System.out.println("stat test 3: " + test2 + " iterations");
         measureStat(nativeStat, test2, dir, file, missing);
         measureStat(fileStat, test2, dir, file, missing);
         measureStat(nioStat, test2, dir.toPath(), file.toPath(), missing.toPath());
 
-        warmup = 200;
+        System.out.println();
+        System.out.println("stat test 4: " + test2 + " iterations");
+        measureStat(nativeStat, test2, dir, file, missing);
+        measureStat(fileStat, test2, dir, file, missing);
+        measureStat(nioStat, test2, dir.toPath(), file.toPath(), missing.toPath());
+
+        warmup = 500;
+        System.out.println();
+        System.out.println("walk warmup: " + warmup + " iterations");
+        measureWalk(nativeStat, warmup, dir);
+        measureWalk(fileStat, warmup, dir);
+        measureWalk(nioStat, warmup, dir.toPath());
+
+        System.out.println();
+        System.out.println("walk warmup: " + warmup + " iterations");
+        measureWalk(nativeStat, warmup, dir);
+        measureWalk(fileStat, warmup, dir);
+        measureWalk(nioStat, warmup, dir.toPath());
+
         System.out.println();
         System.out.println("walk warmup: " + warmup + " iterations");
         measureWalk(nativeStat, warmup, dir);
@@ -56,6 +92,25 @@ public class Main {
         test1 = 2000;
         System.out.println();
         System.out.println("walk test 1: " + test1 + " iterations");
+        measureWalk(nativeStat, test1, dir);
+        measureWalk(fileStat, test1, dir);
+        measureWalk(nioStat, test1, dir.toPath());
+
+        System.out.println();
+        System.out.println("walk test 2: " + test1 + " iterations");
+        measureWalk(nativeStat, test1, dir);
+        measureWalk(fileStat, test1, dir);
+        measureWalk(nioStat, test1, dir.toPath());
+
+        test1 = 5000;
+        System.out.println();
+        System.out.println("walk test 3: " + test1 + " iterations");
+        measureWalk(nativeStat, test1, dir);
+        measureWalk(fileStat, test1, dir);
+        measureWalk(nioStat, test1, dir.toPath());
+
+        System.out.println();
+        System.out.println("walk test 4: " + test1 + " iterations");
         measureWalk(nativeStat, test1, dir);
         measureWalk(fileStat, test1, dir);
         measureWalk(nioStat, test1, dir.toPath());
