@@ -39,7 +39,7 @@ public class Main {
         measureStat(fileStat, test1, dir, file, missing);
         measureStat(nioStat, test1, dir.toPath(), file.toPath(), missing.toPath());
 
-        int test2 = 5000;
+        int test2 = 500000;
         System.out.println();
         System.out.println("stat test 2: " + test2 + " iterations");
         measureStat(nativeStat, test2, dir, file, missing);
@@ -53,7 +53,7 @@ public class Main {
         measureWalk(fileStat, warmup, dir);
         measureWalk(nioStat, warmup, dir.toPath());
 
-        test1 = 500;
+        test1 = 2000;
         System.out.println();
         System.out.println("walk test 1: " + test1 + " iterations");
         measureWalk(nativeStat, test1, dir);
@@ -193,7 +193,7 @@ public class Main {
         }
 
         @Override
-        void walk(Path dir, List<FileDetails> details) throws IOException {
+        void walk(Path dir, final List<FileDetails> details) throws IOException {
             Files.walkFileTree(dir, new SimpleFileVisitor<Path>(){
                 @Override
                 public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {

@@ -5,8 +5,8 @@ repositories {
 }
 
 dependencies {
-    compile "net.rubygrapefruit:native-platform:0.11"
+    compile "net.rubygrapefruit:native-platform:0.13"
 }
 
 sourceCompatibility = 1.7
-mainClassName = 'net.rubygrapefruit.fs.Main'
+mainClassName = 'Main'
