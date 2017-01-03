@@ -1,7 +1,6 @@
 import net.rubygrapefruit.platform.DirEntry;
 import net.rubygrapefruit.platform.Native;
-import net.rubygrapefruit.platform.PosixFileInfo;
-import net.rubygrapefruit.platform.PosixFiles;
+import net.rubygrapefruit.platform.FileInfo;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -192,15 +191,15 @@ public class Main {
 
     private static class NativeBackedStat extends Stat<File> {
 
-        private final PosixFiles posixFiles;
+        private final net.rubygrapefruit.platform.Files posixFiles;
 
         public NativeBackedStat() {
-            posixFiles = Native.get(PosixFiles.class);
+            posixFiles = Native.get(net.rubygrapefruit.platform.Files.class);
         }
 
         @Override
         public FileDetails stat(File file) throws IOException {
-            PosixFileInfo fileInfo = posixFiles.stat(file);
+            FileInfo fileInfo = posixFiles.stat(file);
             switch (fileInfo.getType()) {
                 case Missing:
                     return new FileDetails(FileDetails.Type.Missing, 0, 0);
